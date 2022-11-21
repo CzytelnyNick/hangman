@@ -1,12 +1,12 @@
-
+import time
 import os
 import random
 
 words= ["piesek","kotecek","mialemtakiegopsa"]
 wordsChoice = random.randint(0,2)
 word = words[wordsChoice]
-hangman0 = """ 
-____
+hangman = [""" 
+______
 |/   |
 |   
 |    
@@ -14,9 +14,9 @@ ____
 |    
 |
 |_____
+""",
 """
-hangman1="""
- ____
+______
 |/   |
 |   (_)
 |    
@@ -24,9 +24,9 @@ hangman1="""
 |    
 |
 |_____
+""",
 """
-hangman2="""
- ____
+______
 |/   |
 |   (_)
 |    |
@@ -34,9 +34,9 @@ hangman2="""
 |    
 |
 |_____
+""",
 """
-hangman3 = """
- ____
+______
 |/   |
 |   (_)
 |   \|
@@ -44,9 +44,9 @@ hangman3 = """
 |    
 |
 |_____
+""",
 """
-hangman4="""
- ____
+______
 |/   |
 |   (_)
 |   \|/
@@ -54,9 +54,9 @@ hangman4="""
 |    
 |
 |_____
+""",
 """
-hangman5="""
- ____
+______
 |/   |
 |   (_)
 |   \|/
@@ -64,9 +64,9 @@ hangman5="""
 |   | 
 |
 |_____
+""",
 """
-hangman6="""
- ____
+______
 |/   |
 |   (_)
 |   /|\\
@@ -74,17 +74,30 @@ hangman6="""
 |   | |
 |
 |_____
-"""
+"""]
+h=0
 j=0
 while(True):
-    
-    letter = input("PODAJ LITERE")
-
-    # len(word)
     for x in word:
         print("_", end="")
+    letter = input("\nPODAJ LITERE ")
+    
+    # len(word)
+    
 
     for i in word:
-          
-        if(i == letter): 
-            print(tab[word[i]])
+        
+        if(i != letter): 
+            print(i)
+            print(word)
+        
+    if (i == letter):
+        print(hangman[h])    
+        h= h+1
+        time.sleep(2)
+        os.system('cls')
+        print(word)
+        if h == 7: 
+            
+            print("PRZEGROŁEŚ")
+            break
