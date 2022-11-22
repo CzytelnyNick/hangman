@@ -1,7 +1,7 @@
 import time
 import os
 import random
-
+# import numpy as np
 words= ["piesek","kotecek","mialemtakiegopsa"]
 wordsChoice = random.randint(0,2)
 word = words[wordsChoice]
@@ -77,9 +77,11 @@ ______
 """]
 h=0
 j=0
+hangmanCheck = True
+wordTab = []
 while(True):
-    for x in word:
-        print("_", end="")
+    
+    
     letter = input("\nPODAJ LITERE ")
     
     # len(word)
@@ -87,17 +89,29 @@ while(True):
 
     for i in word:
         
-        if(i != letter): 
-            print(i)
-            print(word)
+        if(i == letter): 
+            k = i
+            print(i, end="")
+            hangmanCheck = False
+        else: 
+            k = "_"
+            # s1 = ('i', [1, 2, 3])
+            print(word.index(i))
         
-    if (i == letter):
+         
+
+        
+    if (hangmanCheck == True):
+            
         print(hangman[h])    
         h= h+1
         time.sleep(2)
         os.system('cls')
-        print(word)
+        
         if h == 7: 
             
             print("PRZEGROŁEŚ")
             break
+    if hangmanCheck == False:
+        print(wordTab)
+
